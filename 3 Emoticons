@@ -1,0 +1,72 @@
+import simplegui
+import math
+
+width = 600
+height = 600
+happy = False
+sad = False
+angry = False
+
+
+def toggle_happy():
+    global happy
+    global sad
+    global angry
+    sad = False
+    angry = False
+    happy = True
+    
+def toggle_sad():
+    global sad
+    global angry
+    global happy
+    angry = False
+    happy = False
+    sad = True
+
+def toggle_angry():
+    global angry
+    global sad
+    global happy
+    happy = False
+    sad = False
+    angry = True
+
+def draw(canvas):
+    if happy:
+        canvas.draw_circle((width/2, height/2), width/2 - 50, 10, "Yellow", "Yellow")
+        canvas.draw_circle((width/2, height/2 + 75), width/6- 50 , 10, "Black")
+        canvas.draw_circle((width/2, height/2 + 60), width/6 - 40, 10, "Yellow", "Yellow")
+        canvas.draw_circle((200, 230), 30, 1, "Black", "Black")
+        canvas.draw_circle((400, 230), 30, 1, "Black", "Black")
+        
+    if sad:
+        canvas.draw_circle((width/2, height/2), width/2 - 50, 10, "Yellow", "Yellow")
+        canvas.draw_circle((200, 230), 30, 1, "Black", "Black")
+        canvas.draw_circle((400, 230), 30, 1, "Black", "Black")
+        canvas.draw_circle((205, 220), 10, 1, "White", "White")
+        canvas.draw_circle((405, 220), 10, 1, "White", "White")
+        canvas.draw_circle((390, 240), 10, 1, "White", "White")
+        canvas.draw_circle((190, 240), 10, 1, "White", "White")
+        canvas.draw_circle((width/2, height/2 + 165), width/6- 50 , 10, "Black")
+        canvas.draw_circle((width/2, height/2 + 185), width/6 - 40, 10, "Yellow", "Yellow")
+    if angry:
+        canvas.draw_circle((width/2, height/2), width/2 - 50, 10, "Yellow", "Yellow")
+        canvas.draw_circle((width/2, height/2 + 165), width/6- 50 , 10, "Black")
+        canvas.draw_circle((width/2, height/2 + 185), width/6 - 40, 10, "Yellow", "Yellow")
+        canvas.draw_circle((200, 230), 30, 1, "Black", "Black")
+        canvas.draw_circle((400, 230), 30, 1, "Black", "Black")
+        canvas.draw_line([160, 180],[235, 225], 30, "Black")
+        canvas.draw_line([365, 225],[440, 180], 30, "Black")
+
+
+frame = simplegui.create_frame("Pictures", width, height) 
+
+frame.set_draw_handler(draw)
+frame.add_button("Happy", toggle_happy, 100)
+frame.add_button("Sad", toggle_sad, 100)
+frame.add_button("Angry", toggle_angry, 100)
+
+
+# Remember to start the frame
+frame.start()
