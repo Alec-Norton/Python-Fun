@@ -61,7 +61,7 @@ def draw_handler(canvas):
 
         
         
-    canvas.draw_text((x, y), 30, 10, color)
+    canvas.draw_circle((x, y), 30, 10, color)
 
 
 
