@@ -1,0 +1,48 @@
+import turtle as trtl #imports turtle
+painter = trtl.Turtle() #makes turtle object as painter
+
+houseColor = input("What is the color of the house? ") #asks for input for color, and dimensions of home
+houseX = int(input("How wide is the house in feet? "))
+houseY = int(input("How tall is the house in feet? "))
+
+painter.pensize(3) #initializes pensize and color
+painter.pencolor("black")
+
+painter.penup() #gets ready to move turtle to designated spot, so the picture is in the middle of the window
+painter.fillcolor(houseColor) #begins filling drawing with user input color
+
+painter.begin_fill()
+
+painter.goto((-houseX/2), (-houseY/2)) #goes to spot
+painter.pendown()
+painter.forward(houseX) #creates a simple rectangle
+painter.left(90)
+painter.forward(houseY)
+painter.left(90)
+painter.forward(houseX)
+painter.left(90)
+painter.forward(houseY)
+
+painter.end_fill() #ends drawing, fills rectangle in
+
+painter.setheading(0) #resets the angle of the turtle
+
+roofColor = input("What is the color of the roof? ") #asks for input for the roof's color and height
+roofHeight = int(input("How tall is the roof in feet? "))
+
+painter.fillcolor(roofColor) #begins filling in shape
+painter.begin_fill()
+painter.penup()
+
+painter.goto((-houseX/2 - 20), (houseY/2)) #positions it so there is a little overhang
+painter.pendown()
+painter.forward(houseX + 40)
+painter.goto(0, roofHeight + houseY/2) #creates triangle without using complicated angles
+painter.goto(-houseX/2 - 20, houseY/2 )
+
+painter.end_fill() #fills in triangle
+
+print("Congratulations! You've made your own home.") #prints congratulations
+
+wn = trtl.Screen() #keeps image on screen
+wn.mainloop()
